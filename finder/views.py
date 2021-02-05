@@ -2,17 +2,15 @@ import requests
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from finder.utils import get_location, get_barbers
 from .models import Greeting
 
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
-    response = requests.get('http://freegeoip.app/json/')
-    geodata = response.json()
-    return render(request, "index.html", {
-        'latitude': geodata['latitude'],
-        'longitude': geodata['longitude']
-    })
+    latitude, longitude = get_location()
+    businesses = get_barbers(latitude, longitude)['businesses']
+    return render(request, "index.html", {'business': businesses})
 
 def about(request):
     return render(request, "about.html")

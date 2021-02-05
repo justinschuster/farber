@@ -13,8 +13,9 @@
 	</div>
 </div>
 <div class='container'>
-	<h2>Your Location</h2>
-	<p>Latitude: {{ latitude }}</p>
-	<p>Longitude: {{ longitude }}</p>
+	<h2>Barbers Near You</h2>
+	{% for biz in business %}
+		<li>{{ biz.name }}</li>
+	{% endfor %}
 </div>
 {% endblock %}
