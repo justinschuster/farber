@@ -16,6 +16,7 @@ import finder.views
 
 urlpatterns = [
     path("", finder.views.index, name="index"),
+    path("about/", finder.views.about, name="about"),
     path("db/", finder.views.db, name="db"),
     path("admin/", admin.site.urls),
 ]
